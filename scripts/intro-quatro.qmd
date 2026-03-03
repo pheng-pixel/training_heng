@@ -1,0 +1,95 @@
+---
+title: "Introduction to Quarto"
+format: html
+bibliography: references.bib
+---
+
+Markdown formatting
+
+# This is a large title
+
+## this is a smaller title
+
+###### this is an even smaller title
+
+*text* **bold**
+
+-   Item 1
+-   Item 2
+    -   Item 2a
+    -   Item 2b
+
+1.  Item 1
+2.  Item 2
+3.  Item 3
+    -   Item 3a
+    -   Item 3b
+
+Roses are red,\
+Violets are blue.
+
+hold on wait a minute[@oke2020]
+
+| Col1          | Col2 |
+|---------------|------|
+| hello         | 1    |
+| wait a minute | 2    |
+
+# Introduction
+
+## About the data
+
+-Water sample data from Arctic Ocean -Data downloaded from the Arctic Data Center: [Tweedie ADC data](https://arcticdata.io/catalog/view/doi:10.18739/A25T3FZ8X)
+
+## Setup
+
+```{r}
+#| warning: false
+library(readr)
+library(here)
+```
+
+## Read in data
+
+```{r}
+#| warning: false
+bg_chem<-read_csv(here("data/BGchem2008data.csv"))
+#here() looks into home directory to get file and makes it so that you don't have to specify a personal working directory
+```
+
+# Analysis 
+## a. Calculate summary statistics
+
+```{r}
+#| eval: false
+#| echo: false
+#Print column names
+colnames(bg_chem)
+#Show data structure
+str(bg_chem)
+#Show first 6 lines of data frame
+head(bg_chem)
+#Get summary of each column
+summary(bg_chem)
+#Print unique values in a specific column
+unique(bg_chem$Date)
+
+```
+
+## b.Calculate mean Redfield ratio
+```{r}
+nitrate<-mean(bg_chem$NO3)
+nitrite<-mean(bg_chem$NO2)
+amm<-mean(bg_chem$NH4)
+phos<-mean(bg_chem$P)
+```
+
+
+## c.Plot Redfield ratio
+```{r}
+ratio<-(nitrate+nitrite+amm)/phos
+```
+
+Here is the ratio calculated: `r round(ratio)`
+
+3.  Conclusion

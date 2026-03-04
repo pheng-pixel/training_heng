@@ -5,9 +5,9 @@ format: html
 
 ## Course lessons
 
-- [Intro to Quarto](/scripts/intro-quatro.html)
-- [Intro to git and GitHub]
-- [Cleaning and Wrangling Data](/scripts/tidy_and_wrangle.html)
+- [Intro to Quarto](scripts/intro-quatro.html)
+- Intro to git and [GitHub](https://github.com)
+- [Cleaning and Wrangling Data](scripts/tidy_and_wrangle.html)
 
 ## Practice schedule
 
